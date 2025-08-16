@@ -1,0 +1,90 @@
+/* Estilos Gerais e Variáveis */
+:root {
+    --primary-bg: #121212;
+    --secondary-bg: #1e1e1e;
+    --tertiary-bg: #2a2a2a;
+    --accent-color: #1DB954; /* Cor inspirada no Spotify */
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --hover-color: #282828;
+    --border-color: #282828;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    margin: 0;
+    overflow: hidden; /* Evita scroll na página principal */
+}
+
+.accent-color { color: var(--accent-color); }
+
+/* --- Container de Login --- */
+.login-container { display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800 ) center/cover; }
+.login-form { background-color: var(--secondary-bg); padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px var(--shadow-color); width: 100%; max-width: 400px; text-align: center; border: 1px solid var(--border-color); }
+.login-form h2 { margin-bottom: 10px; font-size: 1.8em; }
+.login-form p { color: var(--text-secondary); margin-bottom: 30px; }
+.input-group { position: relative; margin-bottom: 20px; }
+.input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
+.input-group input { width: 100%; padding: 12px 12px 12px 45px; border: 1px solid var(--border-color); border-radius: 5px; background-color: var(--tertiary-bg); color: var(--text-primary); transition: border-color 0.3s; }
+.input-group input:focus { border-color: var(--accent-color); outline: none; }
+.login-form button { width: 100%; padding: 12px; border: none; border-radius: 5px; background-color: var(--accent-color); color: white; font-size: 1em; cursor: pointer; transition: background-color 0.3s; font-weight: bold; }
+.login-form button:hover { background-color: #1ed760; }
+.login-form button i { margin-left: 8px; }
+
+/* --- Interface Principal --- */
+header { display: flex; align-items: center; justify-content: space-between; padding: 0 30px; height: 70px; background-color: var(--primary-bg); border-bottom: 1px solid var(--border-color); }
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo i { font-size: 1.8em; }
+.logo h1 { font-size: 1.5em; margin: 0; }
+nav { display: flex; gap: 10px; }
+.nav-btn { background: none; border: none; color: var(--text-secondary); padding: 10px 20px; cursor: pointer; border-radius: 5px; transition: all 0.3s; font-size: 1em; font-weight: 600; }
+.nav-btn i { margin-right: 8px; }
+.nav-btn:hover { color: var(--text-primary); }
+.nav-btn.active { background-color: var(--tertiary-bg); color: var(--text-primary); }
+.header-right { display: flex; align-items: center; gap: 20px; }
+.search-box { position: relative; }
+.search-box input { background-color: var(--tertiary-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 8px 15px 8px 40px; color: var(--text-primary); width: 220px; transition: width 0.3s; }
+.search-box input:focus { width: 280px; outline: none; border-color: var(--accent-color); }
+.search-box i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
+.logout-btn { color: var(--text-secondary); font-size: 1.2em; text-decoration: none; transition: color 0.3s; }
+.logout-btn:hover { color: var(--accent-color); }
+
+main { display: flex; height: calc(100vh - 70px); }
+aside#category-list { width: 260px; background-color: var(--primary-bg); padding: 20px; overflow-y: auto; border-right: 1px solid var(--border-color); }
+aside h2 { margin: 0 0 15px 0; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); font-size: 1.2em; }
+aside h2 i { margin-right: 10px; }
+#categories-container .category-item { padding: 12px 15px; cursor: pointer; border-radius: 5px; margin-bottom: 5px; transition: background-color 0.2s, color 0.2s; font-weight: 500; color: var(--text-secondary); }
+#categories-container .category-item:hover { background-color: var(--hover-color); color: var(--text-primary); }
+#categories-container .category-item.active { background-color: var(--accent-color); color: var(--text-primary); font-weight: bold; }
+
+section#content-grid { flex-grow: 1; padding: 20px; overflow-y: auto; }
+#grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 25px; }
+.grid-item { background-color: var(--secondary-bg); border-radius: 8px; overflow: hidden; cursor: pointer; transition: all 0.3s; position: relative; opacity: 0; /* Para Anime.js */ }
+.grid-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px var(--shadow-color); }
+.grid-item .poster { width: 100%; height: 270px; display: block; background-color: var(--tertiary-bg); border-bottom: 1px solid var(--border-color); }
+.grid-item .title { padding: 15px; font-size: 0.9em; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* --- Player Modal --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { background-color: var(--secondary-bg); padding: 20px; border-radius: 10px; width: 90%; max-width: 900px; position: relative; box-shadow: 0 10px 40px var(--shadow-color); }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 2em; cursor: pointer; color: var(--text-secondary); transition: color 0.3s; z-index: 10; }
+.close-btn:hover { color: var(--accent-color); }
+#player-title { margin: 0 0 15px 0; }
+#video-player { width: 100%; max-height: 70vh; border-radius: 5px; }
+#series-info { margin-top: 15px; max-height: 200px; overflow-y: auto; }
+#series-info h4 i { margin-right: 8px; }
+#episodes-list { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 10px; }
+.episode-item { background-color: var(--tertiary-bg); padding: 8px 12px; border-radius: 5px; cursor: pointer; transition: background-color 0.2s; font-size: 0.9em; }
+.episode-item:hover { background-color: var(--hover-color); }
+.episode-item.active { background-color: var(--accent-color); color: var(--text-primary); font-weight: bold; }
+
+/* --- Loading Spinner --- */
+#loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(18, 18, 18, 0.7); display: flex; justify-content: center; align-items: center; z-index: 2000; transition: opacity 0.3s; opacity: 0; pointer-events: none; }
+#loading-overlay.visible { opacity: 1; pointer-events: all; }
+.spinner { border: 5px solid var(--tertiary-bg); border-top: 5px solid var(--accent-color); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
